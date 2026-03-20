@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daftar Ringkasan Buku</title>
+
+<style>
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+/* BACKGROUND MODERN */
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f5e6d3, #e8d5c0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #3e2f23;
+}
+
+/* CONTAINER */
+.container {
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+}
+
+/* TITLE */
+h4 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeDown 0.8s ease forwards;
+}
+
+/* CARD */
+.card {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255,255,255,0.3);
+
+    transition: all 0.4s ease;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 0.8s ease forwards;
+}
+
+/* delay animasi */
+.card:nth-child(2) { animation-delay: 0.2s; }
+.card:nth-child(3) { animation-delay: 0.4s; }
+
+/* HOVER EFFECT */
+.card:hover {
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+/* TITLE CARD */
+.card h6 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* TEXT */
+.card p {
+    font-size: 14px;
+    line-height: 1.6;
+    opacity: 0.8;
+}
+
+/* BUTTON MODERN */
+.btn {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 10px 16px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 14px;
+    color: white;
+
+    background: linear-gradient(135deg, #c89b6d, #a97a50);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+
+    transition: all 0.3s ease;
+}
+
+/* BUTTON HOVER */
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeDown {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h4>📚 Daftar Ringkasan Buku</h4>
+
+    <div class="card">
+        <h6>Buku Sakti HTML, CSS & JAVASCRIPT</h6>
+        <p>
+            Penulis : Adam Saputra S.SI <br>
+            Status : On Progress
+        </p>
+        <a href="Ringkasan buku pertama/materi_ringkasan_1/materi_ringkasan_1.html" class="btn">
+            Lihat Materi
+        </a>
+    </div>
+
+    <div class="card">
+        <h6>Networking Komputer</h6>
+        <p>
+            Penulis : None <br>
+            Status : None
+        </p>
+    </div>
+
+</div>
+
+</body>
+</html>
