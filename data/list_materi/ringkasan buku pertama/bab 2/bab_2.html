@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bab 2</title>
+<style>
+body{
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.3;
+    margin: 0;
+}
+h1{
+    text-align: center;
+}
+.container{
+    max-width: 900px;
+    margin:0 auto;
+    background:antiquewhite;
+    padding: 20px;
+    border: 14px solid white;
+    border-radius: 20px;
+    
+}
+h2{
+    margin-top:40px;
+    border-bottom:3px solid #2e656b;
+    padding-bottom:5px;
+}
+table{
+    border-collapse: collapse;
+}
+td, th{
+    border: 1px solid black;
+    padding: 8px;
+}
+td{
+    font-size: 12px;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+}
+th{
+    background-color: rgb(145, 145, 145);
+    text-align: center;
+}
+.kode{
+    text-align: center;
+    background-color: rgb(176, 173, 173);
+    font-family: 'Times New Roman', Times, serif;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 15px;
+}
+img{
+    transition: transform 0.3s;
+    margin: 20px 0;
+    display: block;
+    border-radius: 10px;
+}
+img:hover{
+    transform: scale(1.1);
+}
+a{
+    text-decoration: none;
+    color: #0066cc;
+}
+a:hover{
+    text-decoration: underline;
+}
+.link{
+    margin-top: 15px;
+}
+footer{
+    text-align: center;
+    margin-top: 50px;
+    color: grey
+}
+tr:nth-child(even){
+background:#f2f2f2;
+}
+tr:hover{
+background:#ddd;
+}
+.btn-back {
+  position: relative;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  color: white;
+  font-size: 14px;
+
+  background: linear-gradient(135deg, #c89b6d, #a97a50);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+/* Hover efek naik + glow */
+.btn-back:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+}
+
+/* Efek klik (pressed) */
+.btn-back:active {
+  transform: scale(0.95);
+}
+
+/* Efek cahaya jalan (shine effect) */
+.btn-back::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.4),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+/* Aktif saat hover */
+.btn-back:hover::before {
+  left: 100%;
+}
+
+
+</style>
+</head>
+<body>
+<div class="container">
+<h1>BAB 2</h1>
+<h2>daftar beberapa atribut :</h2>
+<table>
+    <tr>
+        <th>Atribut</th>
+        <th>Penjelasan</th>
+    </tr>
+    <tr>
+        <td>alt</td>
+        <td>menentukan teks alternatif untuk gambar, ketika gambar tak dapat ditampilkan</td>
+    </tr>
+    <tr>
+        <td>disabled</td>
+        <td>menentukan bahwa elemen input harus dinonaktifkan</td>
+    </tr>
+    <tr>
+        <td>href</td>
+        <td>menentukan URL (alamat web) untuk tautan</td>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>menentukan ID unik untuk suatu elemen</td>
+    </tr>
+    <tr>
+        <td>src</td>
+        <td>menentukan URL (alamat web) untuk gambar</td>
+    </tr>
+    <tr>
+        <td>style</td>
+        <td>menentukan gaya CSS sebaris untuk suatu elemen</td>
+    </tr>
+    <tr>
+        <td>title</td>
+        <td>menentukan informasi tambahan tentang elemen (ditampilkan sebagai ujung alat)</td>
+    </tr>
+</table>
+<h2>Atribut href</h2>
+<p>tautan HTMl didefinisikan dengan tag &lt;a&gt;. Alamat tautan ditentukan dalam atribut href : </p>
+<div class="kode">
+    <p>&lt;a href="https://www.google.com"&gt; ini adalah google &lt;/a&gt;</p>
+</div>
+ <p>maka, pada browser akan tampil:</p><img src="media/tampilan_web_link.png" alt="link">
+ 
+<h2>Atribut src</h2>
+<p>nama file sumber gambar ditentukan dalam atribut src:</p>
+<div class="kode">
+<p>&lt;img src="img_apple.jpg"&gt;</p>
+</div>
+<p>jika file gambar berada di folder lain, harus disesuaikan:</p>
+<div class="kode">
+<p>&lt;img src="folder/img_apple.jpg"&gt;</p>
+</div>
+<footer>
+    <cite>selesai</cite>
+    <p><b>klik tautan berikut untuk mengerjakan ujian (opsional):</b></p>
+    <a href="ujian_bab_2.html" class="link">ujian bab 2</a>
+    </footer>
+<button onclick="history.back()" class="btn-back">← Kembali</button>
+</div>
+</body>
+</html>
