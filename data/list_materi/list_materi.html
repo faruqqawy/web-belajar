@@ -1,29 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Daftar Ringkasan Buku</title>
+<link rel="stylesheet" href="../../css/style.css">
 
 <style>
-/* RESET */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Segoe UI", sans-serif;
-}
-
-/* BACKGROUND MODERN */
-body {
-    min-height: 100vh;
-    background: linear-gradient(135deg, #f5e6d3, #e8d5c0);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #3e2f23;
-}
-
 /* CONTAINER */
 .container {
     width: 100%;
@@ -82,7 +65,7 @@ h4 {
 /* BUTTON MODERN */
 .btn {
     display: inline-block;
-    margin-top: 12px;
+    margin-top: 100px;
     padding: 10px 16px;
     border-radius: 10px;
     text-decoration: none;
@@ -115,64 +98,60 @@ h4 {
         transform: translateY(0);
     }
 }
-/* Navbar utama */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #333;
-  padding: 10px 30px 15px;
-  position: sticky;
-  top: 0;
-  border-radius: 0 0 8px 8px;
-  
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar{
+  width:min(1120px,100%);
+  margin:0 auto;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  padding:18px 24px;
+
+  background:rgba(15,23,42,0.7);
+
+  border:1px solid rgba(255,255,255,0.08);
+
+  border-radius:18px;
+
+  backdrop-filter:blur(14px);
+
+  position:sticky;
+  top:16px;
 }
 
-/* Logo */
-.logo {
-  color: white;
-  font-size: 20px;
-  font-weight: bold;
+.logo{
+  text-decoration:none;
+  color:white;
+
+  font-size:1.4rem;
+  font-weight:800;
 }
 
-/* Menu */
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 20px;
+.logo span{
+  color:var(--primary);
 }
 
-/* Link */
-.nav-links a {
-  text-decoration: none;
-  color: white;
-  transition: 0.3s;
+.nav-links{
+  list-style:none;
+  display:flex;
+  gap:20px;
 }
 
-/* Hover effect */
-.nav-links a:hover {
-  color: #00bcd4;
-}
-.nav-links a {
-  position: relative;
-}
-
-.nav-links a::after {
-  content: "";
-  position: absolute;
-  width: 0%;
-  height: 2px;
-  background: #00bcd4;
-  left: 0;
-  bottom: -5px;
-  transition: 0.3s;
+.nav-links a{
+  text-decoration:none;
+  color:#cbd5e1;
+  font-weight:600;
+  transition:0.25s;
 }
 
-.nav-links a:hover::after {
-  width: 100%;
-}
-nav{
-    margin-bottom:px;
+.nav-links a:hover,
+.nav-links a.active{
+  color:white;
 }
 
 </style>
@@ -180,14 +159,17 @@ nav{
 
 <body>
 <nav class="navbar">
-<div class="logo">NuNu</div>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="#">none</a></li>
-      <li><a href="#">none</a></li>
-      <li><a href="#">none</a></li>
-    </ul>
-</nav>
+      <a href="index.html" class="logo">
+        NuNu<span>Web</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="../../index.html" class="active">Home</a></li>
+        <li><a href="data/list_materi/list_materi.html">Materi</a></li>
+        <li><a href="data/list_video/list_video.html">Video</a></li>
+        <li><a href="data/list_buku/list_buku.html">Buku</a></li>
+      </ul>
+    </nav>
     
 
 <div class="container">
