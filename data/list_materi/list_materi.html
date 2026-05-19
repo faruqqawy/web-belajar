@@ -115,15 +115,83 @@ h4 {
         transform: translateY(0);
     }
 }
+/* Navbar utama */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  padding: 10px 30px 15px;
+  position: sticky;
+  top: 0;
+  border-radius: 0 0 8px 8px;
+  
+}
+
+/* Logo */
+.logo {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Menu */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+/* Link */
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  transition: 0.3s;
+}
+
+/* Hover effect */
+.nav-links a:hover {
+  color: #00bcd4;
+}
+.nav-links a {
+  position: relative;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: #00bcd4;
+  left: 0;
+  bottom: -5px;
+  transition: 0.3s;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+nav{
+    margin-bottom:px;
+}
 
 </style>
 </head>
 
 <body>
+<nav class="navbar">
+<div class="logo">NuNu</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#">none</a></li>
+      <li><a href="#">none</a></li>
+      <li><a href="#">none</a></li>
+    </ul>
+</nav>
     
 
 <div class="container">
-    <h4>📚 Daftar Ringkasan Buku</h4>
+    <h4>Daftar Ringkasan Buku</h4>
 
     <div class="card">
         <h6>Buku Sakti HTML, CSS & JAVASCRIPT</h6>
