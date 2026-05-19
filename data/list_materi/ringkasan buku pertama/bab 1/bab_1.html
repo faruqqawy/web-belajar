@@ -1,339 +1,925 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<title>bab 1</title>
-<style>
-html{
-    scroll-behavior: smooth;
-}
-body{
-    background-color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    line-height: 1.3;
-    margin:0;
-}
-.container{
-    max-width: 900px;
-    margin:0 auto;
-    background:antiquewhite;
-    padding:30px;
-    border: 14px solid white;
-    border-radius: 20px;
-    overflow: hidden;
-    
-}
-h2{
-    margin-top:40px;
-    border-bottom:3px solid #2e656b;
-    padding-bottom:5px;
-}
-footer{
-    text-align: center;
-    margin-top: 50px;
-    color: grey;
-}
-a{
-    text-decoration: none;
-    color: #0066cc;
-}
-a:hover{
-    text-decoration: underline;
-}
-img{
-    transition: transform 0.3s;
-    margin: 20px 0;
-    display: block;
-    border-radius: 10px;
-    max-width: 100%;
-    height: auto;
-}
-img:hover{
-    transform: scale(1.1);
-}
-.link{
-    margin-top: 15px;
-}
-h1{
-    text-align: center;
-}
-.anchor{
-    text-align: left;
-    background-color: rgb(183, 178, 171);
-    border-radius: 10px;
-    padding: 5px;
-    margin: 5px;
-    margin-right: 300px;
-    position: sticky;
-    top: 10px;margin-top: 50px;
-}
-.anchor a{
-    color: rgb(21, 68, 73);
-    text-decoration: none;
-    transition: transform 0.3s, color 0.3s;
-    display: inline-block;
-}
-.anchor a:hover{
-    text-decoration: underline;
-    transform: scale(1.1);
-    color: blue;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>Bab 1 - Berkenalan dengan HTML | NuNu Web</title>
 
+  <meta name="description" content="Ringkasan Bab 1 tentang pengertian HTML, sejarah HTML, fungsi HTML, browser, tag HTML, dan dasar-dasar HTML.">
+  <meta name="theme-color" content="#f6f1e8">
 
-</style>
+  <style>
+    /* =========================
+       RESET
+    ========================= */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* =========================
+       BASE
+    ========================= */
+
+    :root {
+      --bg-main: #f6f1e8;
+      --bg-paper: #fffaf1;
+      --bg-soft: #efe3d0;
+      --bg-code: #2f241b;
+      --text-main: #2f241b;
+      --text-muted: #74685c;
+      --accent: #9a6b3f;
+      --accent-dark: #6f4728;
+      --border: #e2d2bd;
+      --shadow: 0 20px 60px rgba(83, 58, 35, 0.12);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top left, rgba(154, 107, 63, 0.14), transparent 32%),
+        linear-gradient(180deg, #f9f4eb, var(--bg-main));
+      color: var(--text-main);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.85;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    p {
+      margin-top: 14px;
+    }
+
+    strong,
+    b {
+      color: var(--accent-dark);
+    }
+
+    /* =========================
+       LAYOUT
+    ========================= */
+
+    .reading-shell {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+      padding: 28px 20px 80px;
+    }
+
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 34px;
+    }
+
+    .brand {
+      text-decoration: none;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.95rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      color: var(--accent-dark);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 250, 241, 0.8);
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: var(--text-muted);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      transition: 0.2s ease;
+    }
+
+    .back-link:hover {
+      color: var(--accent-dark);
+      transform: translateX(-3px);
+    }
+
+    .article-layout {
+      display: grid;
+      grid-template-columns: 270px 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    /* =========================
+       SIDEBAR
+    ========================= */
+
+    .toc {
+      position: sticky;
+      top: 24px;
+      padding: 22px;
+      border-radius: 26px;
+      background: rgba(255, 250, 241, 0.86);
+      border: 1px solid var(--border);
+      box-shadow: 0 14px 40px rgba(83, 58, 35, 0.08);
+    }
+
+    .toc-title {
+      margin-bottom: 14px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.78rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-dark);
+    }
+
+    .toc ul {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+
+    .toc a {
+      display: block;
+      padding: 9px 10px;
+      border-radius: 12px;
+      text-decoration: none;
+      color: var(--text-muted);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      line-height: 1.35;
+      transition: 0.18s ease;
+    }
+
+    .toc a:hover {
+      background: var(--bg-soft);
+      color: var(--accent-dark);
+      transform: translateX(4px);
+    }
+
+    /* =========================
+       ARTICLE
+    ========================= */
+
+    .article {
+      overflow: hidden;
+      background: var(--bg-paper);
+      border: 1px solid var(--border);
+      border-radius: 34px;
+      box-shadow: var(--shadow);
+    }
+
+    .article-hero {
+      padding: clamp(32px, 6vw, 58px);
+      background:
+        linear-gradient(90deg, rgba(154, 107, 63, 0.13), transparent),
+        var(--bg-paper);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: var(--bg-soft);
+      color: var(--accent-dark);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 760px;
+      font-size: clamp(2.25rem, 5vw, 4.3rem);
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+    }
+
+    .article-description {
+      max-width: 720px;
+      margin-top: 22px;
+      color: var(--text-muted);
+      font-size: 1.08rem;
+    }
+
+    .article-meta {
+      margin-top: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .article-meta span {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(239, 227, 208, 0.78);
+      color: var(--accent-dark);
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+
+    .article-content {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: clamp(30px, 5vw, 58px);
+      font-size: 1.05rem;
+    }
+
+    .article-content section {
+      scroll-margin-top: 30px;
+    }
+
+    h2 {
+      margin-top: 54px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+      font-size: clamp(1.55rem, 3vw, 2.25rem);
+      line-height: 1.2;
+      letter-spacing: -0.025em;
+    }
+
+    h2:first-child {
+      margin-top: 0;
+    }
+
+    h3 {
+      margin-top: 28px;
+      font-size: 1.25rem;
+      color: var(--accent-dark);
+    }
+
+    ul,
+    ol {
+      margin-top: 16px;
+      padding-left: 24px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    .info-box {
+      margin-top: 22px;
+      padding: 20px 22px;
+      border-radius: 22px;
+      background: #f7ead8;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+
+    .external-link {
+      color: var(--accent-dark);
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* =========================
+       CODE BLOCK
+    ========================= */
+
+    .code-card {
+      margin-top: 18px;
+      overflow: hidden;
+      border-radius: 22px;
+      background: var(--bg-code);
+      box-shadow: 0 14px 36px rgba(47, 36, 27, 0.18);
+    }
+
+    .code-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 16px;
+      background: rgba(0, 0, 0, 0.18);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      color: #e8d5c0;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .code-dots {
+      display: inline-flex;
+      gap: 6px;
+    }
+
+    .code-dots span {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: #c8a97e;
+      opacity: 0.8;
+    }
+
+    pre {
+      margin: 0;
+      padding: 20px;
+      overflow-x: auto;
+    }
+
+    code {
+      color: #fff4df;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .inline-code {
+      padding: 2px 6px;
+      border-radius: 7px;
+      background: var(--bg-soft);
+      color: var(--accent-dark);
+      font-family: "Courier New", Courier, monospace;
+      font-size: 0.92em;
+      font-weight: 700;
+    }
+
+    /* =========================
+       TABLE
+    ========================= */
+
+    .timeline {
+      margin-top: 18px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+    }
+
+    .timeline-row {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 18px;
+      padding: 16px 18px;
+      background: rgba(255, 250, 241, 0.7);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .timeline-row:last-child {
+      border-bottom: 0;
+    }
+
+    .timeline-year {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--accent-dark);
+      font-weight: 900;
+    }
+
+    .timeline-text {
+      color: var(--text-muted);
+    }
+
+    /* =========================
+       FOOTER ACTION
+    ========================= */
+
+    .article-footer {
+      margin-top: 56px;
+      padding: 28px;
+      border-radius: 26px;
+      background: #f7ead8;
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .article-footer p {
+      margin-top: 0;
+      color: var(--text-muted);
+    }
+
+    .exam-link {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 18px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: var(--accent-dark);
+      color: #fffaf1;
+      text-decoration: none;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.92rem;
+      font-weight: 800;
+      transition: 0.2s ease;
+    }
+
+    .exam-link:hover {
+      transform: translateY(-3px);
+      background: #52341f;
+    }
+
+    .finish {
+      margin-top: 26px;
+      text-align: center;
+      color: var(--text-muted);
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 920px) {
+      .article-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .toc {
+        position: static;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .reading-shell {
+        padding: 18px 14px 60px;
+      }
+
+      .top-nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .article,
+      .toc {
+        border-radius: 24px;
+      }
+
+      .article-content {
+        font-size: 1rem;
+      }
+
+      .timeline-row {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-<div class="container">
-<h1>BAB 1</h1>
-<div class="anchor">
-    <ul>
-        <li><a href="#pengertian">pengertian HTML</a></li>
-        <li><a href="#sejarah">sejarah dan perkembangan</a></li>
-        <li><a href="#fungsi">fungsi HTML</a></li>
-        <li><a href="#web">web browser</a></li>
-        <li><a href="#tulis">menulis HTML di notepad atau textedit</a></li>
-        <li><a href="#tag">tag HTML</a></li>
-        <li><a href="#dasar">dasar-dasar HTML</a></li>
-        <li><a href="#ujian">link ujian bab 1</a></li>
-    </ul>
-</div>
-<h2 id="pengertian">Pengertian HTML</h2>
-<p>
-HTML atau <b>HyperText Markup Language</b> merupakan bahasa markup yang digunakan untuk membuat halaman website yang dapat ditampilkan melalui web browser.
-</p>
 
-<p>
-HTML versi terbaru adalah <b>HTML5</b>. Versi ini tidak hanya mendukung teks dan gambar, tetapi juga elemen interaktif seperti menu, audio, video, dan berbagai fitur lainnya.
-</p>
+  <div class="reading-shell">
 
-<p>
-HTML termasuk bahasa yang relatif mudah dipelajari dibandingkan dengan bahasa pemrograman lainnya, sehingga sering menjadi dasar dalam pembelajaran pembuatan website.
-</p>
+    <nav class="top-nav">
+      <a href="../../../../index.html" class="brand">NuNu Web</a>
 
+      <a href="../materi_ringkasan_1.html" class="back-link">
+        ← Kembali ke daftar bab
+      </a>
+    </nav>
 
-<h2 id="sejarah">Sejarah HTML</h2>
-<p>
-HTML pertama kali diperkenalkan pada tahun <b>1989</b> oleh <b>Tim Berners-Lee</b>. Bahasa ini kemudian dikembangkan oleh organisasi <b>World Wide Web Consortium (W3C)</b>.
-</p>
+    <div class="article-layout">
 
-<p>
-Pada tahun 2004 dibentuk organisasi <b>WHATWG (Web Hypertext Application Technology Working Group)</b> yang juga berperan dalam pengembangan HTML hingga saat ini.
-</p>
+      <aside class="toc">
+        <p class="toc-title">Isi Bab 1</p>
 
-<h4>Perkembangan HTML</h4>
-<ul>
+        <ul>
+          <li><a href="#pengertian">Pengertian HTML</a></li>
+          <li><a href="#sejarah">Sejarah HTML</a></li>
+          <li><a href="#fungsi">Fungsi HTML</a></li>
+          <li><a href="#browser">Web Browser</a></li>
+          <li><a href="#menulis">Menulis HTML</a></li>
+          <li><a href="#tag">Tag HTML</a></li>
+          <li><a href="#dasar">Dasar-Dasar HTML</a></li>
+          <li><a href="#ujian">Ujian Bab 1</a></li>
+        </ul>
+      </aside>
 
-<li>
-<b>24 November 1995</b> – HTML 2.0 dipublikasikan sebagai IETF RFC 1866 dengan fitur:
-<ul>
-<li>Upload file melalui form</li>
-<li>Tabel</li>
-<li>Peta gambar berbasis klien</li>
-<li>Dukungan internasional</li>
-</ul>
-</li>
+      <main class="article">
 
-<li>
-<b>14 Januari 1997</b> – HTML 3.2 dipublikasikan oleh W3C.
-</li>
+        <header class="article-hero">
+          <span class="eyebrow">Bab 1</span>
 
-<li>
-<b>18 Desember 1997</b> – HTML 4.0 dirilis dengan tiga variasi:
-<ul>
-<li>Strict (ketat)</li>
-<li>Transitional</li>
-<li>Frameset</li>
-</ul>
-</li>
+          <h1>Berkenalan dengan HTML</h1>
 
-<li>
-<b>24 Desember 1999</b> – HTML 4.01 (perbaikan minor dari HTML 4.0).
-</li>
+          <p class="article-description">
+            Bab ini membahas dasar pengenalan HTML, mulai dari pengertian,
+            sejarah, fungsi, browser, tag, hingga struktur dasar halaman HTML.
+          </p>
 
-<li>
-<b>15 Mei 2000</b> – ISO HTML berdasarkan HTML 4.01 Strict.
-</li>
+          <div class="article-meta">
+            <span>Topik: HTML Dasar</span>
+            <span>Jenis: Ringkasan</span>
+            <span>Status: Belajar Awal</span>
+          </div>
+        </header>
 
-<li>
-<b>28 Oktober 2014</b> – HTML5 menjadi rekomendasi resmi W3C.
-</li>
+        <article class="article-content">
 
-</ul>
+          <section id="pengertian">
+            <h2>Pengertian HTML</h2>
 
+            <p>
+              HTML atau <b>HyperText Markup Language</b> adalah bahasa markup
+              yang digunakan untuk membuat struktur halaman website agar dapat
+              ditampilkan melalui web browser.
+            </p>
 
-<h2 id="fungsi">Fungsi HTML</h2>
+            <p>
+              HTML bukan bahasa pemrograman penuh seperti JavaScript atau Python.
+              HTML lebih berperan sebagai bahasa penanda yang memberi tahu browser
+              bagian mana yang merupakan judul, paragraf, tautan, gambar, daftar,
+              tabel, formulir, dan elemen lainnya.
+            </p>
 
-<p>
-Dokumen HTML mirip dengan dokumen teks biasa, tetapi di dalamnya terdapat kode khusus yang disebut <b>tag</b>. Tag digunakan untuk menentukan struktur dan format halaman web.
-</p>
+            <p>
+              Versi HTML yang digunakan secara modern adalah <b>HTML5</b>.
+              Versi ini mendukung struktur dokumen yang lebih baik serta elemen
+              multimedia seperti audio, video, dan elemen semantik.
+            </p>
 
-<p>
-HTML berfungsi untuk menyusun komponen halaman web seperti teks, gambar, tautan, dan elemen lainnya. Browser kemudian menerjemahkan kode HTML menjadi tampilan yang dapat dibaca pengguna.
-</p>
+            <div class="info-box">
+              <b>Inti penting:</b> HTML adalah fondasi awal halaman web.
+              CSS digunakan untuk memperindah tampilan, sedangkan JavaScript
+              digunakan untuk menambahkan interaksi.
+            </div>
+          </section>
 
-<p>
-Informasi lebih lanjut dapat dibaca di:
-<a href="https://id.wikipedia.org/wiki/HTML" target="_blank">https://id.wikipedia.org/wiki/HTML</a>
-</p>
+          <section id="sejarah">
+            <h2>Sejarah HTML</h2>
 
-<p>Beberapa hal yang dapat dilakukan dengan HTML:</p>
+            <p>
+              HTML pertama kali diperkenalkan oleh <b>Tim Berners-Lee</b> pada
+              akhir 1980-an sebagai bagian dari perkembangan World Wide Web.
+              HTML kemudian terus dikembangkan agar mampu memenuhi kebutuhan
+              halaman web yang semakin kompleks.
+            </p>
 
-<ul>
-<li>Membuat judul dan heading.</li>
-<li>Menampilkan teks tebal atau miring.</li>
-<li>Mengubah ukuran tulisan.</li>
-<li>Menggabungkan teks dengan gambar.</li>
-<li>Membuat tautan (link).</li>
-<li>Menambahkan audio dan video.</li>
-<li>Membuat formulir interaktif.</li>
-</ul>
+            <div class="timeline">
+              <div class="timeline-row">
+                <div class="timeline-year">1989</div>
+                <div class="timeline-text">HTML mulai diperkenalkan oleh Tim Berners-Lee.</div>
+              </div>
 
+              <div class="timeline-row">
+                <div class="timeline-year">1995</div>
+                <div class="timeline-text">HTML 2.0 dipublikasikan sebagai standar awal.</div>
+              </div>
 
-<h2 id="web">Web Browser</h2>
+              <div class="timeline-row">
+                <div class="timeline-year">1997</div>
+                <div class="timeline-text">HTML 3.2 dan HTML 4.0 dirilis oleh W3C.</div>
+              </div>
 
-<p>
-Web browser adalah aplikasi yang digunakan untuk mengakses dan menampilkan halaman website di internet.
-</p>
+              <div class="timeline-row">
+                <div class="timeline-year">1999</div>
+                <div class="timeline-text">HTML 4.01 dirilis sebagai perbaikan dari HTML 4.0.</div>
+              </div>
 
-<p>
-Browser membaca dokumen HTML lalu menampilkan hasilnya dalam bentuk tampilan visual yang dapat dipahami pengguna.
-</p>
+              <div class="timeline-row">
+                <div class="timeline-year">2014</div>
+                <div class="timeline-text">HTML5 menjadi rekomendasi resmi W3C.</div>
+              </div>
+            </div>
+          </section>
 
+          <section id="fungsi">
+            <h2>Fungsi HTML</h2>
 
-<h2 id="tulis">Menulis HTML di Notepad atau TextEdit</h2>
+            <p>
+              HTML berfungsi untuk menyusun komponen utama halaman web. Browser
+              membaca kode HTML, lalu menerjemahkannya menjadi tampilan visual
+              yang dapat dilihat dan digunakan oleh pengguna.
+            </p>
 
-<p>
-Saat belajar HTML, disarankan menggunakan editor teks sederhana seperti <b>Notepad</b> atau <b>TextEdit</b>. Dengan cara ini, kita dapat memahami struktur kode HTML dengan lebih jelas sebelum menggunakan editor profesional.
-</p>
+            <p>Beberapa hal yang dapat dibuat menggunakan HTML:</p>
 
+            <ul>
+              <li>Membuat judul dan heading.</li>
+              <li>Menampilkan paragraf dan teks.</li>
+              <li>Membuat teks tebal, miring, atau diberi penekanan.</li>
+              <li>Menambahkan gambar.</li>
+              <li>Membuat tautan ke halaman lain.</li>
+              <li>Membuat tabel dan daftar.</li>
+              <li>Membuat formulir input.</li>
+              <li>Menambahkan audio dan video.</li>
+            </ul>
 
-<h2 id="tag">Tag HTML</h2>
+            <p>
+              Referensi tambahan:
+              <a href="https://id.wikipedia.org/wiki/HTML" target="_blank" class="external-link">
+                baca tentang HTML
+              </a>.
+            </p>
+          </section>
 
-<p>
-Tag HTML adalah elemen yang ditulis di antara tanda kurung sudut.
-</p>
+          <section id="browser">
+            <h2>Web Browser</h2>
 
-<p>
-Contoh:
-</p>
+            <p>
+              Web browser adalah aplikasi yang digunakan untuk membuka dan
+              menampilkan halaman website. Contoh browser adalah Google Chrome,
+              Mozilla Firefox, Microsoft Edge, Safari, dan Opera.
+            </p>
 
-<p>&lt;p&gt;Isi paragraf&lt;/p&gt;</p>
+            <p>
+              Saat sebuah file HTML dibuka, browser akan membaca tag dan struktur
+              HTML di dalamnya, lalu menampilkan hasilnya sebagai halaman web.
+            </p>
+          </section>
 
-<ul>
-<li>Tag HTML biasanya terdiri dari pasangan tag pembuka dan tag penutup.</li>
-<li>Tag penutup ditulis sama dengan tag pembuka, tetapi ditambahkan tanda garis miring (/).</li>
-</ul>
+          <section id="menulis">
+            <h2>Menulis HTML</h2>
 
-<p>Contoh:</p>
-<img src="media/tag.png" alt="Contoh tag HTML">
+            <p>
+              Untuk belajar dasar HTML, kita bisa mulai dari editor sederhana
+              seperti Notepad atau TextEdit. Namun untuk praktik yang lebih nyaman,
+              editor seperti Visual Studio Code sangat membantu karena memiliki
+              fitur highlight kode, auto complete, dan struktur folder.
+            </p>
 
+            <p>
+              File HTML biasanya disimpan dengan ekstensi
+              <span class="inline-code">.html</span>, misalnya
+              <span class="inline-code">index.html</span>.
+            </p>
+          </section>
 
-<h2 id="dasar">Dasar-Dasar HTML</h2>
+          <section id="tag">
+            <h2>Tag HTML</h2>
 
-<ul>
+            <p>
+              Tag HTML adalah penanda yang ditulis menggunakan kurung sudut.
+              Umumnya tag memiliki tag pembuka dan tag penutup.
+            </p>
 
-<li>
-<h4>Dokumen HTML</h4>
-<p>
-Dokumen HTML dimulai dengan deklarasi <b>&lt;!DOCTYPE html&gt;</b>.
-</p>
-<p>
-Struktur dasar HTML:
-</p>
-<p>
-&lt;html&gt; ... &lt;/html&gt;
-</p>
-<p>
-Bagian yang ditampilkan pada halaman web berada di dalam tag <b>&lt;body&gt;</b>.
-</p>
-</li>
+            <div class="code-card">
+              <div class="code-header">
+                <span>Contoh tag paragraf</span>
 
-<li>
-<h4>Judul (Heading)</h4>
-<p>
-Judul dalam HTML ditentukan dengan tag <b>&lt;h1&gt;</b> hingga <b>&lt;h6&gt;</b>.  
-Tag <b>h1</b> adalah yang paling penting, sedangkan <b>h6</b> yang paling kecil.
-</p>
-<img src="media/heading.png" alt="Contoh heading">
-</li>
+                <span class="code-dots">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </span>
+              </div>
 
-<li>
-<h4>Paragraf</h4>
-<p>
-Paragraf dibuat menggunakan tag <b>&lt;p&gt;</b>.
-</p>
-<img src="media/p.png" alt="Contoh paragraf">
-</li>
+              <pre><code>&lt;p&gt;Ini adalah isi paragraf.&lt;/p&gt;</code></pre>
+            </div>
 
-<li>
-<h4>Tautan (Link)</h4>
-<p>
-Tautan dibuat dengan tag <b>&lt;a&gt;</b> dan menggunakan atribut <b>href</b> untuk menentukan alamat tujuan.
-</p>
-<img src="media/pranala.png" alt="Contoh tautan">
-</li>
+            <p>
+              Pada contoh di atas, <span class="inline-code">&lt;p&gt;</span>
+              adalah tag pembuka, sedangkan
+              <span class="inline-code">&lt;/p&gt;</span> adalah tag penutup.
+            </p>
 
-<li>
-<h4>Gambar</h4>
-<p>
-Gambar ditampilkan menggunakan tag <b>&lt;img&gt;</b> dengan atribut seperti:
-</p>
-<ul>
-<li>src (sumber gambar)</li>
-<li>alt (teks alternatif)</li>
-<li>width dan height (ukuran gambar)</li>
-</ul>
-<img src="media/img.png" alt="Contoh gambar" width="500" height="100">
-</li>
+            <ul>
+              <li>Tag pembuka menandai awal elemen.</li>
+              <li>Tag penutup menandai akhir elemen.</li>
+              <li>Isi elemen berada di antara tag pembuka dan tag penutup.</li>
+            </ul>
+          </section>
 
-<li>
-<h4>Tombol</h4>
-<p>
-Tombol dibuat menggunakan tag <b>&lt;button&gt;</b>.
-</p>
-<img src="media/tombol.png" alt="Contoh tombol">
-</li>
+          <section id="dasar">
+            <h2>Dasar-Dasar HTML</h2>
 
-<li>
-<h4>Daftar (List)</h4>
-<p>
-Daftar dapat dibuat dengan:
-</p>
-<ul>
-<li><b>&lt;ul&gt;</b> (unordered list)</li>
-<li><b>&lt;ol&gt;</b> (ordered list)</li>
-<li><b>&lt;li&gt;</b> (list item)</li>
-</ul>
-<img src="media/list.png" alt="Contoh list">
-</li>
+            <h3>Struktur Dokumen HTML</h3>
 
-<li>
-<h4>Elemen Kosong</h4>
-<p>
-Elemen kosong adalah elemen HTML tanpa isi. Contohnya <b>&lt;br&gt;</b> yang berfungsi untuk membuat baris baru.
-</p>
-<img src="media/tag_kosong.png" alt="Contoh tag kosong">
-</li>
+            <p>
+              Dokumen HTML biasanya dimulai dengan deklarasi
+              <span class="inline-code">&lt;!DOCTYPE html&gt;</span>.
+              Deklarasi ini memberi tahu browser bahwa dokumen menggunakan HTML5.
+              Bagian yang ditampilkan pada halaman web berada di dalam tag <span class="inline-code">&lt;body&gt;</span>.
+            </p>
 
-</ul>
+            <div class="code-card">
+              <div class="code-header">
+                <span>Struktur dasar HTML</span>
 
+                <span class="code-dots">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </span>
+              </div>
 
-<p>
-Struktur elemen HTML biasanya dapat memiliki atribut tambahan, misalnya pada tag <b>&lt;img&gt;</b>.
-</p>
+              <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="id"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Judul Halaman&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Halo Dunia&lt;/h1&gt;
+  &lt;p&gt;Ini adalah halaman HTML pertama saya.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            </div>
 
-<footer>
-<cite>Selesai</cite>
+            <h3>Heading</h3>
 
-<p>
-<b >Klik tautan berikut untuk mengerjakan ujian (opsional):</b>
-</p>
+            <p>
+              Heading digunakan untuk membuat judul dan subjudul. HTML memiliki
+              heading dari <span class="inline-code">&lt;h1&gt;</span> sampai
+              <span class="inline-code">&lt;h6&gt;</span>.
+            </p>
 
-<a href="ujian_bab_1.html" class="link" id="ujian">Ujian Bab 1</a>
+            <div class="code-card">
+              <div class="code-header">
+                <span>Contoh heading</span>
 
-</footer>
-</div>
+                <span class="code-dots">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </span>
+              </div>
+
+              <pre><code>&lt;h1&gt;Judul Utama&lt;/h1&gt;
+&lt;h2&gt;Subjudul&lt;/h2&gt;
+&lt;h3&gt;Bagian Kecil&lt;/h3&gt;</code></pre>
+            </div>
+
+            <h3>Paragraf</h3>
+
+            <p>
+              Paragraf dibuat menggunakan tag
+              <span class="inline-code">&lt;p&gt;</span>.
+            </p>
+
+            <div class="code-card">
+              <div class="code-header">
+                <span>Contoh paragraf</span>
+
+                <span class="code-dots">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </span>
+              </div>
+
+              <pre><code>&lt;p&gt;Ini adalah paragraf pertama.&lt;/p&gt;
+&lt;p&gt;Ini adalah paragraf kedua.&lt;/p&gt;</code></pre>
+            </div>
+
+            <h3>Tautan</h3>
+
+            <p>
+              Tautan dibuat menggunakan tag
+              <span class="inline-code">&lt;a&gt;</span> dengan atribut
+              <span class="inline-code">href</span>. 
+              Atribut <span class="inline-code">href</span> berisi URL atau alamat tujuan tautan.
+            </p>
+
+            <div class="code-card">
+              <div class="code-header">
+                <span>Contoh tautan</span>
+
+                <span class="code-dots">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </span>
+              </div>
+
+              <pre><code>&lt;a href="https://www.google.com"&gt;Buka Google&lt;/a&gt;</code></pre>
+            </div>
+
+            <h3>Gambar</h3>
+
+            <p>
+              Gambar ditampilkan menggunakan tag
+              <span class="inline-code">&lt;img&gt;</span>. Tag ini menggunakan atribut seperti <span class="inline-code">src</span> untuk menentukan lokasi gambar, <span class="inline-code">alt</span> untuk deskripsi gambar, <span class="inline-code">width</span> untuk lebar gambar, dan <span class="inline-code">height</span> untuk tinggi gambar. Tag ini termasuk
+              elemen kosong karena tidak membutuhkan tag penutup.
+            </p>
+
+            <div class="code-card">
+              <div class="code-header">
+                <span>Contoh gambar</span>
+
+                <span class="code-dots">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </span>
+              </div>
+
+              <pre><code>&lt;img src="gambar.jpg" alt="Deskripsi gambar"&gt;</code></pre>
+            </div>
+
+            <h3>Tombol</h3>
+
+            <p>
+              Tombol dapat dibuat menggunakan tag
+              <span class="inline-code">&lt;button&gt;</span>.
+            </p>
+
+            <div class="code-card">
+              <div class="code-header">
+                <span>Contoh tombol</span>
+
+                <span class="code-dots">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </span>
+              </div>
+
+              <pre><code>&lt;button&gt;Klik Saya&lt;/button&gt;</code></pre>
+            </div>
+
+            <h3>Daftar</h3>
+
+            <p>
+              Daftar dapat dibuat menggunakan
+              <span class="inline-code">&lt;ul&gt;</span> untuk daftar tidak berurutan (unordered list) dan
+              <span class="inline-code">&lt;ol&gt;</span> untuk daftar berurutan (ordered list), serta
+              <span class="inline-code">&lt;li&gt;</span> untuk setiap item dalam daftar.
+            </p>
+
+            <div class="code-card">
+              <div class="code-header">
+                <span>Contoh daftar</span>
+
+                <span class="code-dots">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </span>
+              </div>
+
+              <pre><code>&lt;ul&gt;
+  &lt;li&gt;HTML&lt;/li&gt;
+  &lt;li&gt;CSS&lt;/li&gt;
+  &lt;li&gt;JavaScript&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+            </div>
+
+            <h3>Elemen Kosong</h3>
+
+            <p>
+              Elemen kosong adalah elemen HTML yang tidak memiliki isi dan tidak
+              memakai tag penutup. Contohnya adalah
+              <span class="inline-code">&lt;br&gt;</span> dan
+              <span class="inline-code">&lt;img&gt;</span>.
+            </p>
+
+            <div class="code-card">
+              <div class="code-header">
+                <span>Contoh elemen kosong</span>
+
+                <span class="code-dots">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </span>
+              </div>
+
+              <pre><code>Baris pertama&lt;br&gt;
+Baris kedua
+
+&lt;img src="foto.jpg" alt="Foto profil"&gt;</code></pre>
+            </div>
+
+            <div class="info-box">
+              <b>Kesimpulan bab:</b> HTML digunakan untuk membangun struktur
+              halaman web. Setelah memahami HTML, pembelajaran dapat dilanjutkan
+              ke CSS untuk tampilan dan JavaScript untuk interaksi.
+            </div>
+          </section>
+
+          <section class="article-footer" id="ujian">
+            <p>
+              <b>Ujian Bab 1</b>
+            </p>
+
+            <p>
+              Link ujian disediakan sebagai latihan opsional setelah membaca bab ini.
+            </p>
+
+            <a href="ujian_bab_1.html" class="exam-link">
+              Buka Ujian Bab 1
+            </a>
+          </section>
+
+          <p class="finish">
+            <cite>Selesai</cite>
+          </p>
+
+        </article>
+
+      </main>
+
+    </div>
+
+  </div>
+
 </body>
 </html>

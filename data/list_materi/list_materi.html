@@ -1,200 +1,490 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daftar Ringkasan Buku</title>
-<link rel="stylesheet" href="../../css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-/* CONTAINER */
-.container {
-    width: 100%;
-    max-width: 800px;
-    padding: 20px;
-}
+  <title>Daftar Materi | NuNu Web</title>
 
-/* TITLE */
-h4 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    letter-spacing: 1px;
-    opacity: 0;
-    transform: translateY(-20px);
-    animation: fadeDown 0.8s ease forwards;
-}
+  <meta name="description" content="Daftar materi, ringkasan buku, dan catatan belajar di NuNu Web.">
+  <meta name="theme-color" content="#111827">
 
-/* CARD */
-.card {
-    background: rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(12px);
-    border-radius: 16px;
-    padding: 20px;
-    margin-bottom: 20px;
-    border: 1px solid rgba(255,255,255,0.3);
+  <link rel="stylesheet" href="../../css/style.css">
 
-    transition: all 0.4s ease;
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeUp 0.8s ease forwards;
-}
-
-/* delay animasi */
-.card:nth-child(2) { animation-delay: 0.2s; }
-.card:nth-child(3) { animation-delay: 0.4s; }
-
-/* HOVER EFFECT */
-.card:hover {
-    transform: translateY(-8px) scale(1.01);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-}
-
-/* TITLE CARD */
-.card h6 {
-    font-size: 18px;
-    margin-bottom: 10px;
-}
-
-/* TEXT */
-.card p {
-    font-size: 14px;
-    line-height: 1.6;
-    opacity: 0.8;
-}
-
-/* BUTTON MODERN */
-.btn {
-    display: inline-block;
-    margin-top: 100px;
-    padding: 10px 16px;
-    border-radius: 10px;
-    text-decoration: none;
-    font-size: 14px;
-    color: white;
-
-    background: linear-gradient(135deg, #c89b6d, #a97a50);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-
-    transition: all 0.3s ease;
-}
-
-/* BUTTON HOVER */
-.btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
-
-/* ANIMATIONS */
-@keyframes fadeUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
+  <style>
+    .library-body {
+      background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.14), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(34, 197, 94, 0.12), transparent 30%),
+        #f1f5f9;
     }
-}
 
-@keyframes fadeDown {
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    .library-header {
+      padding: 24px;
+      background:
+        linear-gradient(135deg, #020617, #0f172a 58%, #111827);
+      color: white;
+      border-bottom-left-radius: 42px;
+      border-bottom-right-radius: 42px;
     }
-}
-/* =========================
-   NAVBAR
-========================= */
 
-.navbar{
-  width:min(1120px,100%);
-  margin:0 auto;
+    .library-hero {
+      width: min(1120px, 100%);
+      margin: 64px auto 0;
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 28px;
+      align-items: stretch;
+    }
 
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+    .library-copy {
+      padding: 36px;
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      backdrop-filter: blur(14px);
+    }
 
-  padding:18px 24px;
+    .library-copy h1 {
+      margin-top: 18px;
+      max-width: 760px;
+      font-size: clamp(2.2rem, 5.5vw, 4.4rem);
+      line-height: 1.04;
+      letter-spacing: -0.06em;
+    }
 
-  background:rgba(15,23,42,0.7);
+    .library-copy p {
+      max-width: 650px;
+      margin-top: 22px;
+      color: #cbd5e1;
+      font-size: 1.05rem;
+    }
 
-  border:1px solid rgba(255,255,255,0.08);
+    .library-panel {
+      padding: 28px;
+      border-radius: 30px;
+      background: white;
+      color: var(--text-main);
+      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.22);
+    }
 
-  border-radius:18px;
+    .library-panel-title {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
 
-  backdrop-filter:blur(14px);
+    .library-progress-number {
+      margin-top: 16px;
+      font-size: 3.2rem;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.06em;
+    }
 
-  position:sticky;
-  top:16px;
-}
+    .library-progress-text {
+      margin-top: 8px;
+      color: var(--text-muted);
+    }
 
-.logo{
-  text-decoration:none;
-  color:white;
+    .mini-progress {
+      width: 100%;
+      height: 12px;
+      margin-top: 22px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #e2e8f0;
+    }
 
-  font-size:1.4rem;
-  font-weight:800;
-}
+    .mini-progress span {
+      display: block;
+      width: 50%;
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--primary), #22c55e);
+    }
 
-.logo span{
-  color:var(--primary);
-}
+    .library-stats {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
 
-.nav-links{
-  list-style:none;
-  display:flex;
-  gap:20px;
-}
+    .stat-box {
+      padding: 16px;
+      border-radius: 18px;
+      background: #f8fafc;
+      border: 1px solid var(--border);
+    }
 
-.nav-links a{
-  text-decoration:none;
-  color:#cbd5e1;
-  font-weight:600;
-  transition:0.25s;
-}
+    .stat-box strong {
+      display: block;
+      font-size: 1.45rem;
+      line-height: 1;
+    }
 
-.nav-links a:hover,
-.nav-links a.active{
-  color:white;
-}
+    .stat-box span {
+      display: block;
+      margin-top: 6px;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+    }
 
-</style>
+    .library-main {
+      width: min(1120px, 100%);
+      margin: 72px auto 0;
+      padding: 0 24px 90px;
+    }
+
+    .library-toolbar {
+      margin-bottom: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+    }
+
+    .library-toolbar h2 {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+    }
+
+    .library-toolbar p {
+      max-width: 620px;
+      margin-top: 12px;
+      color: var(--text-muted);
+    }
+
+    .toolbar-pill {
+      flex-shrink: 0;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: #e0f2fe;
+      color: #075985;
+      font-weight: 800;
+      font-size: 0.9rem;
+    }
+
+    .materi-list {
+      display: grid;
+      gap: 22px;
+    }
+
+    .materi-row {
+      position: relative;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 22px;
+      align-items: center;
+      padding: 26px;
+      overflow: hidden;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid var(--border);
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+      transition: 0.25s;
+    }
+
+    .materi-row::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 7px;
+      background: linear-gradient(180deg, var(--primary), #22c55e);
+    }
+
+    .materi-row:hover {
+      transform: translateX(8px);
+      box-shadow: 0 22px 48px rgba(15, 23, 42, 0.14);
+    }
+
+    .materi-thumb {
+      width: 76px;
+      height: 76px;
+      display: grid;
+      place-items: center;
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.24), transparent 60%),
+        #f1f5f9;
+      font-size: 2rem;
+    }
+
+    .materi-content h3 {
+      font-size: 1.35rem;
+      line-height: 1.25;
+    }
+
+    .materi-content p {
+      max-width: 680px;
+      margin-top: 8px;
+      color: var(--text-muted);
+      font-size: 0.96rem;
+    }
+
+    .materi-tags {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .materi-tags span {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #f1f5f9;
+      color: #475569;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .materi-side {
+      min-width: 150px;
+      display: grid;
+      justify-items: end;
+      gap: 14px;
+    }
+
+    .status {
+      padding: 7px 11px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 900;
+    }
+
+    .status-progress {
+      background: rgba(56, 189, 248, 0.13);
+      color: #0369a1;
+    }
+
+    .status-empty {
+      background: #f1f5f9;
+      color: #64748b;
+    }
+
+    .small-progress {
+      width: 130px;
+      height: 9px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #e2e8f0;
+    }
+
+    .small-progress span {
+      display: block;
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--primary), #22c55e);
+    }
+
+    .small-progress .progress-65 {
+      width: 65%;
+    }
+
+    .small-progress .progress-0 {
+      width: 0%;
+    }
+
+    .materi-row .btn {
+      min-height: auto;
+      padding: 10px 16px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 900px) {
+      .library-hero {
+        grid-template-columns: 1fr;
+      }
+
+      .library-toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .toolbar-pill {
+        align-self: flex-start;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .library-header {
+        padding: 16px;
+        border-bottom-left-radius: 28px;
+        border-bottom-right-radius: 28px;
+      }
+
+      .library-copy {
+        padding: 26px;
+      }
+
+      .materi-row {
+        grid-template-columns: 1fr;
+      }
+
+      .materi-thumb {
+        width: 64px;
+        height: 64px;
+      }
+
+      .materi-side {
+        min-width: auto;
+        justify-items: start;
+      }
+
+      .small-progress {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 
-<body>
-<nav class="navbar">
-      <a href="index.html" class="logo">
+<body class="library-body">
+
+  <header class="library-header">
+    <nav class="navbar">
+      <a href="../../index.html" class="logo">
         NuNu<span>Web</span>
       </a>
 
       <ul class="nav-links">
-        <li><a href="../../index.html" class="active">Home</a></li>
-        <li><a href="data/list_materi/list_materi.html">Materi</a></li>
-        <li><a href="data/list_video/list_video.html">Video</a></li>
-        <li><a href="data/list_buku/list_buku.html">Buku</a></li>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="list_materi.html" class="active">Materi</a></li>
+        <li><a href="../list_video/list_video.html">Video</a></li>
+        <li><a href="../list_buku/list_buku.html">Buku</a></li>
       </ul>
     </nav>
-    
 
-<div class="container">
-    <h4>Daftar Ringkasan Buku</h4>
+    <section class="library-hero">
+      <div class="library-copy">
+        <p class="badge">Library Materi</p>
 
-    <div class="card">
-        <h6>Buku Sakti HTML, CSS & JAVASCRIPT</h6>
+        <h1>Ruang arsip untuk materi dan ringkasan belajar.</h1>
+
         <p>
-            Penulis : Adam Saputra S.SI <br>
-            Status : On Progress
+          Semua catatan, ringkasan buku, dan materi inti dikumpulkan di halaman ini
+          agar proses belajar lebih terarah, rapi, dan mudah dilanjutkan kapan saja.
         </p>
-        <a href="ringkasan buku pertama/materi_ringkasan_1.html" class="btn">
-            Lihat Materi
-        </a>
-    </div>
+      </div>
 
-    <div class="card">
-        <h6>Networking Komputer</h6>
+      <aside class="library-panel">
+        <p class="library-panel-title">Progress Koleksi</p>
+
+        <div class="library-progress-number">2</div>
+
+        <p class="library-progress-text">
+          Materi sudah masuk ke daftar belajar.
+        </p>
+
+        <div class="mini-progress">
+          <span></span>
+        </div>
+
+        <div class="library-stats">
+          <div class="stat-box">
+            <strong>1</strong>
+            <span>On Progress</span>
+          </div>
+
+          <div class="stat-box">
+            <strong>1</strong>
+            <span>Belum Dimulai</span>
+          </div>
+        </div>
+      </aside>
+    </section>
+  </header>
+
+  <main class="library-main">
+    <section class="library-toolbar">
+      <div>
+        <p class="section-label">Koleksi Materi</p>
+
+        <h2>Pilih materi yang ingin dipelajari</h2>
+
         <p>
-            Penulis : None <br>
-            Status : None
+          Gunakan daftar ini sebagai peta kecil untuk membuka ringkasan,
+          melihat status belajar, dan menambah materi baru secara bertahap.
         </p>
-    </div>
+      </div>
 
-</div>
+      <span class="toolbar-pill">2 Materi Tersedia</span>
+    </section>
+
+    <section class="materi-list">
+
+      <article class="materi-row">
+        <div class="materi-thumb">📘</div>
+
+        <div class="materi-content">
+          <h3>Buku Sakti HTML, CSS & JavaScript</h3>
+
+          <p>
+            Ringkasan dan catatan pembelajaran dasar HTML, CSS, dan JavaScript
+            sebagai fondasi awal web development.
+          </p>
+
+          <div class="materi-tags">
+            <span>Web Development</span>
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+          </div>
+        </div>
+
+        <div class="materi-side">
+          <span class="status status-progress">On Progress</span>
+
+          <div class="small-progress">
+            <span class="progress-65"></span>
+          </div>
+
+          <a href="ringkasan buku pertama/materi_ringkasan_1.html" class="btn btn-primary">
+            Buka Materi
+          </a>
+        </div>
+      </article>
+
+      <article class="materi-row">
+        <div class="materi-thumb">🌐</div>
+
+        <div class="materi-content">
+          <h3>Networking Komputer</h3>
+
+          <p>
+            Materi dasar jaringan komputer, konsep koneksi, protokol,
+            IP address, dan fondasi menuju cyber security.
+          </p>
+
+          <div class="materi-tags">
+            <span>Networking</span>
+            <span>Cyber Security</span>
+            <span>Protocol</span>
+          </div>
+        </div>
+
+        <div class="materi-side">
+          <span class="status status-empty">Belum Dimulai</span>
+
+          <div class="small-progress">
+            <span class="progress-0"></span>
+          </div>
+
+          <a href="#" class="btn btn-secondary">
+            Belum Tersedia
+          </a>
+        </div>
+      </article>
+
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 NuNu Web. Dibuat untuk belajar dan berkembang.</p>
+  </footer>
 
 </body>
 </html>
