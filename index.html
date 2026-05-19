@@ -189,18 +189,27 @@
 
     <h2>Tinggalkan pesan atau saran untuk NuNu(dev)</h2>
 
-    <p>
-      anda bisa mengirim pesan, saran, atau catatan langsung ke email NuNu(dev).
+    <p class="contact-description">
+      Anda bisa mengirim pesan, saran, atau catatan langsung ke email NuNu(dev).
     </p>
 
     <form action="mailto:alfaruqqawy@gmail.com" method="post" enctype="text/plain" class="contact-form">
-      <input type="text" name="Nama" placeholder="Nama anda" required>
+      <div class="form-group">
+        <label for="nama">Nama</label>
+        <input type="text" id="nama" name="Nama" placeholder="Nama anda" required>
+      </div>
 
-      <input type="email" name="Email" placeholder="Email anda" required>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="Email" placeholder="Email anda" required>
+      </div>
 
-      <textarea name="Pesan" rows="6" placeholder="Tulis pesan anda..." required></textarea>
+      <div class="form-group full">
+        <label for="pesan">Pesan</label>
+        <textarea id="pesan" name="Pesan" rows="6" placeholder="Tulis pesan anda..." required></textarea>
+      </div>
 
-      <button type="submit" class="btn btn-primary">
+      <button type="submit" class="contact-button">
         Kirim Pesan
       </button>
     </form>
