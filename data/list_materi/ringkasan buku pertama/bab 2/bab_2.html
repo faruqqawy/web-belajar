@@ -1,211 +1,866 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>bab 2</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-WC4ZFZ1R2K"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <title>Bab 2 - Atribut HTML | NuNu Web</title>
 
-  gtag('config', 'G-WC4ZFZ1R2K');
-</script>
+  <meta name="description" content="Ringkasan Bab 2 tentang atribut HTML seperti href, src, alt, style, title, id, dan disabled.">
+  <meta name="theme-color" content="#f6f1e8">
 
-<style>
-body{
-    background-color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    line-height: 1.3;
-    margin: 0;
-}
-h1{
-    text-align: center;
-}
-.container{
-    max-width: 900px;
-    margin:0 auto;
-    background:antiquewhite;
-    padding: 20px;
-    border: 14px solid white;
-    border-radius: 20px;
-    
-}
-h2{
-    margin-top:40px;
-    border-bottom:3px solid #2e656b;
-    padding-bottom:5px;
-}
-table{
-    border-collapse: collapse;
-}
-td, th{
-    border: 1px solid black;
-    padding: 8px;
-}
-td{
-    font-size: 12px;
-    font-family: 'Times New Roman', Times, serif;
-    text-align: center;
-}
-th{
-    background-color: rgb(145, 145, 145);
-    text-align: center;
-}
-.kode{
-    text-align: center;
-    background-color: rgb(176, 173, 173);
-    font-family: 'Times New Roman', Times, serif;
-    margin: 20px;
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 15px;
-}
-img{
-    transition: transform 0.3s;
-    margin: 20px 0;
-    display: block;
-    border-radius: 10px;
-}
-img:hover{
-    transform: scale(1.1);
-}
-a{
-    text-decoration: none;
-    color: #0066cc;
-}
-a:hover{
-    text-decoration: underline;
-}
-.link{
-    margin-top: 15px;
-}
-footer{
-    text-align: center;
-    margin-top: 50px;
-    color: grey
-}
-tr:nth-child(even){
-background:#f2f2f2;
-}
-tr:hover{
-background:#ddd;
-}
-.btn-back {
-  position: relative;
-  padding: 10px 18px;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  color: white;
-  font-size: 14px;
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WC4ZFZ1R2K"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  background: linear-gradient(135deg, #c89b6d, #a97a50);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    gtag('config', 'G-WC4ZFZ1R2K');
+  </script>
 
-  transition: all 0.3s ease;
-  overflow: hidden;
-}
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-/* Hover efek naik + glow */
-.btn-back:hover {
-  transform: translateY(-3px) scale(1.03);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.25);
-}
+    :root {
+      --bg-main: #f6f1e8;
+      --bg-paper: #fffaf1;
+      --bg-soft: #efe3d0;
+      --bg-code: #2f241b;
+      --text-main: #2f241b;
+      --text-muted: #74685c;
+      --accent: #9a6b3f;
+      --accent-dark: #6f4728;
+      --border: #e2d2bd;
+      --shadow: 0 20px 60px rgba(83, 58, 35, 0.12);
+    }
 
-/* Efek klik (pressed) */
-.btn-back:active {
-  transform: scale(0.95);
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-/* Efek cahaya jalan (shine effect) */
-.btn-back::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(255,255,255,0.4),
-    transparent
-  );
-  transition: 0.5s;
-}
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top left, rgba(154, 107, 63, 0.14), transparent 32%),
+        linear-gradient(180deg, #f9f4eb, var(--bg-main));
+      color: var(--text-main);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.85;
+    }
 
-/* Aktif saat hover */
-.btn-back:hover::before {
-  left: 100%;
-}
+    a {
+      color: inherit;
+    }
 
+    p {
+      margin-top: 14px;
+    }
 
-</style>
+    b,
+    strong {
+      color: var(--accent-dark);
+    }
+
+    .reading-shell {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+      padding: 28px 20px 80px;
+    }
+
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 34px;
+    }
+
+    .brand {
+      text-decoration: none;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.95rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      color: var(--accent-dark);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 250, 241, 0.8);
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: var(--text-muted);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      transition: 0.2s ease;
+    }
+
+    .back-link:hover {
+      color: var(--accent-dark);
+      transform: translateX(-3px);
+    }
+
+    .article-layout {
+      display: grid;
+      grid-template-columns: 270px 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .toc {
+      position: sticky;
+      top: 24px;
+      padding: 22px;
+      border-radius: 26px;
+      background: rgba(255, 250, 241, 0.86);
+      border: 1px solid var(--border);
+      box-shadow: 0 14px 40px rgba(83, 58, 35, 0.08);
+    }
+
+    .toc-title {
+      margin-bottom: 14px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.78rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-dark);
+    }
+
+    .toc ul {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+
+    .toc a {
+      display: block;
+      padding: 9px 10px;
+      border-radius: 12px;
+      text-decoration: none;
+      color: var(--text-muted);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      line-height: 1.35;
+      transition: 0.18s ease;
+    }
+
+    .toc a:hover {
+      background: var(--bg-soft);
+      color: var(--accent-dark);
+      transform: translateX(4px);
+    }
+
+    .article {
+      overflow: hidden;
+      background: var(--bg-paper);
+      border: 1px solid var(--border);
+      border-radius: 34px;
+      box-shadow: var(--shadow);
+    }
+
+    .article-hero {
+      padding: clamp(32px, 6vw, 58px);
+      background:
+        linear-gradient(90deg, rgba(154, 107, 63, 0.13), transparent),
+        var(--bg-paper);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: var(--bg-soft);
+      color: var(--accent-dark);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 760px;
+      font-size: clamp(2.25rem, 5vw, 4.3rem);
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+    }
+
+    .article-description {
+      max-width: 720px;
+      margin-top: 22px;
+      color: var(--text-muted);
+      font-size: 1.08rem;
+    }
+
+    .article-meta {
+      margin-top: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .article-meta span {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(239, 227, 208, 0.78);
+      color: var(--accent-dark);
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+
+    .article-content {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: clamp(30px, 5vw, 58px);
+      font-size: 1.05rem;
+    }
+
+    .article-content section {
+      scroll-margin-top: 30px;
+    }
+
+    h2 {
+      margin-top: 54px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+      font-size: clamp(1.55rem, 3vw, 2.25rem);
+      line-height: 1.2;
+      letter-spacing: -0.025em;
+    }
+
+    h2:first-child {
+      margin-top: 0;
+    }
+
+    h3 {
+      margin-top: 28px;
+      font-size: 1.25rem;
+      color: var(--accent-dark);
+    }
+
+    ul,
+    ol {
+      margin-top: 16px;
+      padding-left: 24px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    .info-box {
+      margin-top: 22px;
+      padding: 20px 22px;
+      border-radius: 22px;
+      background: #f7ead8;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+
+    .inline-code {
+      padding: 2px 6px;
+      border-radius: 7px;
+      background: var(--bg-soft);
+      color: var(--accent-dark);
+      font-family: "Courier New", Courier, monospace;
+      font-size: 0.92em;
+      font-weight: 700;
+    }
+
+    .code-card {
+      margin-top: 18px;
+      overflow: hidden;
+      border-radius: 22px;
+      background: var(--bg-code);
+      box-shadow: 0 14px 36px rgba(47, 36, 27, 0.18);
+    }
+
+    .code-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 16px;
+      background: rgba(0, 0, 0, 0.18);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      color: #e8d5c0;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .code-dots {
+      display: inline-flex;
+      gap: 6px;
+    }
+
+    .code-dots span {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: #c8a97e;
+      opacity: 0.8;
+    }
+
+    pre {
+      margin: 0;
+      padding: 20px;
+      overflow-x: auto;
+    }
+
+    code {
+      color: #fff4df;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .attribute-grid {
+      margin-top: 22px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .attribute-card {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 16px;
+      align-items: start;
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: rgba(255, 250, 241, 0.7);
+      transition: 0.2s ease;
+    }
+
+    .attribute-card:hover {
+      transform: translateX(6px);
+      background: #f7ead8;
+    }
+
+    .attribute-name {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 38px;
+      padding: 8px 10px;
+      border-radius: 12px;
+      background: var(--bg-soft);
+      color: var(--accent-dark);
+      font-family: "Courier New", Courier, monospace;
+      font-weight: 900;
+    }
+
+    .attribute-card p {
+      margin-top: 0;
+      color: var(--text-muted);
+    }
+
+    .browser-result {
+      margin-top: 18px;
+      padding: 20px;
+      border-radius: 22px;
+      background: #ffffff;
+      border: 1px dashed var(--border);
+    }
+
+    .browser-result-title {
+      margin-bottom: 8px;
+      color: var(--text-muted);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .browser-result a {
+      color: #0369a1;
+      font-weight: 800;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .article-footer {
+      margin-top: 56px;
+      padding: 28px;
+      border-radius: 26px;
+      background: #f7ead8;
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .article-footer p {
+      margin-top: 0;
+      color: var(--text-muted);
+    }
+
+    .exam-link {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 18px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: var(--accent-dark);
+      color: #fffaf1;
+      text-decoration: none;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.92rem;
+      font-weight: 800;
+      transition: 0.2s ease;
+    }
+
+    .exam-link:hover {
+      transform: translateY(-3px);
+      background: #52341f;
+    }
+
+    .finish {
+      margin-top: 26px;
+      text-align: center;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 920px) {
+      .article-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .toc {
+        position: static;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .reading-shell {
+        padding: 18px 14px 60px;
+      }
+
+      .top-nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .article,
+      .toc {
+        border-radius: 24px;
+      }
+
+      .article-content {
+        font-size: 1rem;
+      }
+
+      .attribute-card {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<div class="container">
-<h1>BAB 2</h1>
-<h2>daftar beberapa atribut :</h2>
-<table>
-    <tr>
-        <th>Atribut</th>
-        <th>Penjelasan</th>
-    </tr>
-    <tr>
-        <td>alt</td>
-        <td>menentukan teks alternatif untuk gambar, ketika gambar tak dapat ditampilkan</td>
-    </tr>
-    <tr>
-        <td>disabled</td>
-        <td>menentukan bahwa elemen input harus dinonaktifkan</td>
-    </tr>
-    <tr>
-        <td>href</td>
-        <td>menentukan URL (alamat web) untuk tautan</td>
-    </tr>
-    <tr>
-        <td>id</td>
-        <td>menentukan ID unik untuk suatu elemen</td>
-    </tr>
-    <tr>
-        <td>src</td>
-        <td>menentukan URL (alamat web) untuk gambar</td>
-    </tr>
-    <tr>
-        <td>style</td>
-        <td>menentukan gaya CSS sebaris untuk suatu elemen</td>
-    </tr>
-    <tr>
-        <td>title</td>
-        <td>menentukan informasi tambahan tentang elemen (ditampilkan sebagai ujung alat)</td>
-    </tr>
-</table>
-<h2>Atribut href</h2>
-<p>tautan HTMl didefinisikan dengan tag &lt;a&gt;. Alamat tautan ditentukan dalam atribut href : </p>
-<div class="kode">
-    <p>&lt;a href="https://www.google.com"&gt; ini adalah google &lt;/a&gt;</p>
-</div>
- <p>maka, pada browser akan tampil:</p><img src="image/hasil.png" alt="link">
- 
-<h2>Atribut src</h2>
-<p>nama file sumber gambar ditentukan dalam atribut src:</p>
-<div class="kode">
-<p>&lt;img src="img_apple.jpg"&gt;</p>
-</div>
-<p>jika file gambar berada di folder lain, harus disesuaikan:</p>
-<div class="kode">
-<p>&lt;img src="folder/img_apple.jpg"&gt;</p>
-</div>
-<footer>
-    <cite>selesai</cite>
-    <p><b>klik tautan berikut untuk mengerjakan ujian (opsional):</b></p>
-    <a href="ujian_bab_2.html" class="link">ujian bab 2</a>
-    </footer>
-<button onclick="history.back()" class="btn-back">← Kembali</button>
-</div>
+
+  <div class="reading-shell">
+
+    <nav class="top-nav">
+      <a href="../../../../index.html" class="brand">NuNu Web</a>
+
+      <a href="../materi_ringkasan_1.html" class="back-link">
+        ← Kembali ke daftar bab
+      </a>
+    </nav>
+
+    <div class="article-layout">
+
+      <aside class="toc">
+        <p class="toc-title">Isi Bab 2</p>
+
+        <ul>
+          <li><a href="#pengertian">Pengertian Atribut</a></li>
+          <li><a href="#daftar-atribut">Daftar Atribut</a></li>
+          <li><a href="#href">Atribut href</a></li>
+          <li><a href="#src">Atribut src</a></li>
+          <li><a href="#alt">Atribut alt</a></li>
+          <li><a href="#style">Atribut style</a></li>
+          <li><a href="#title">Atribut title</a></li>
+          <li><a href="#id">Atribut id</a></li>
+          <li><a href="#disabled">Atribut disabled</a></li>
+          <li><a href="#ujian">Ujian Bab 2</a></li>
+        </ul>
+      </aside>
+
+      <main class="article">
+
+        <header class="article-hero">
+          <span class="eyebrow">Bab 2</span>
+
+          <h1>Atribut HTML</h1>
+
+          <p class="article-description">
+            Bab ini membahas atribut HTML, yaitu informasi tambahan yang diberikan
+            pada elemen HTML agar elemen tersebut memiliki fungsi, tujuan, atau
+            perilaku tertentu.
+          </p>
+
+          <div class="article-meta">
+            <span>Topik: HTML Dasar</span>
+            <span>Fokus: Atribut</span>
+            <span>Status: Ringkasan</span>
+          </div>
+        </header>
+
+        <article class="article-content">
+
+          <section id="pengertian">
+            <h2>Pengertian Atribut HTML</h2>
+
+            <p>
+              Atribut HTML adalah informasi tambahan yang ditulis di dalam tag pembuka
+              sebuah elemen HTML. Atribut digunakan untuk memberi detail seperti alamat
+              tautan, sumber gambar, teks alternatif, gaya tampilan, identitas elemen,
+              dan lain-lain.
+            </p>
+
+            <p>
+              Secara umum, atribut memiliki bentuk:
+            </p>
+
+            <div class="code-card">
+              <div class="code-header">
+                <span>Pola atribut HTML</span>
+
+                <span class="code-dots">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </span>
+              </div>
+
+              <pre><code>&lt;Tag namaAtribut="valueataunilaiAtribut"&gt;Isi elemen&lt;/Tag&gt;</code></pre>
+            </div>
+
+            <div class="info-box">
+              <b>Inti penting:</b> atribut selalu ditulis pada tag pembuka.
+              Contohnya <span class="inline-code">href</span> pada tag
+              <span class="inline-code">&lt;a&gt;</span>, atau
+              <span class="inline-code">src</span> pada tag
+              <span class="inline-code">&lt;img&gt;</span>.
+            </div>
+          </section>
+
+          <section id="daftar-atribut">
+            <h2>Daftar Beberapa Atribut</h2>
+
+            <p>
+              Berikut beberapa atribut HTML yang sering muncul ketika belajar dasar HTML.
+            </p>
+
+            <div class="attribute-grid">
+              <div class="attribute-card">
+                <span class="attribute-name">alt</span>
+                <p>Menentukan teks alternatif untuk gambar ketika gambar tidak dapat ditampilkan.</p>
+              </div>
+
+              <div class="attribute-card">
+                <span class="attribute-name">disabled</span>
+                <p>Menentukan bahwa elemen input atau tombol sedang dinonaktifkan.</p>
+              </div>
+
+              <div class="attribute-card">
+                <span class="attribute-name">href</span>
+                <p>Menentukan alamat tujuan pada tautan.</p>
+              </div>
+
+              <div class="attribute-card">
+                <span class="attribute-name">id</span>
+                <p>Menentukan identitas unik untuk sebuah elemen HTML.</p>
+              </div>
+
+              <div class="attribute-card">
+                <span class="attribute-name">src</span>
+                <p>Menentukan sumber file, biasanya dipakai pada gambar, video, atau script.</p>
+              </div>
+
+              <div class="attribute-card">
+                <span class="attribute-name">style</span>
+                <p>Menentukan gaya CSS langsung di dalam elemen HTML.</p>
+              </div>
+
+              <div class="attribute-card">
+                <span class="attribute-name">title</span>
+                <p>Menentukan informasi tambahan yang biasanya muncul ketika kursor diarahkan ke elemen.</p>
+              </div>
+            </div>
+          </section>
+
+          <section id="href">
+            <h2>Atribut href</h2>
+
+            <p>
+              Atribut <span class="inline-code">href</span> digunakan pada tag
+              <span class="inline-code">&lt;a&gt;</span> untuk menentukan alamat
+              tujuan tautan.
+            </p>
+
+            <div class="code-card">
+              <div class="code-header">
+                <span>Contoh href</span>
+
+                <span class="code-dots">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </span>
+              </div>
+
+              <pre><code>&lt;a href="https://www.google.com"&gt;Buka Google&lt;/a&gt;</code></pre>
+            </div>
+
+            <div class="browser-result">
+              <p class="browser-result-title">Hasil di browser</p>
+              <a href="https://www.google.com" target="_blank">Buka Google</a>
+            </div>
+          </section>
+
+          <section id="src">
+            <h2>Atribut src</h2>
+
+            <p>
+              Atribut <span class="inline-code">src</span> digunakan untuk menentukan
+              sumber file. Pada tag gambar, atribut ini menunjukkan lokasi file gambar.
+            </p>
+
+            <div class="code-card">
+              <div class="code-header">
+                <span>Contoh src sederhana</span>
+
+                <span class="code-dots">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </span>
+              </div>
+
+              <pre><code>&lt;img src="img_apple.jpg" alt="Gambar apel"&gt;</code></pre>
+            </div>
+
+            <p>
+              Jika gambar berada di dalam folder lain, maka path harus disesuaikan.
+            </p>
+
+            <div class="code-card">
+              <div class="code-header">
+                <span>Contoh src di folder lain</span>
+
+                <span class="code-dots">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </span>
+              </div>
+
+              <pre><code>&lt;img src="folder/img_apple.jpg" alt="Gambar apel"&gt;</code></pre>
+            </div>
+          </section>
+
+          <section id="alt">
+            <h2>Atribut alt</h2>
+
+            <p>
+              Atribut <span class="inline-code">alt</span> digunakan untuk memberikan
+              teks alternatif pada gambar. Teks ini penting karena akan membantu ketika
+              gambar gagal dimuat atau ketika halaman dibaca oleh screen reader.
+            </p>
+
+            <div class="code-card">
+              <div class="code-header">
+                <span>Contoh alt</span>
+
+                <span class="code-dots">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </span>
+              </div>
+
+              <pre><code>&lt;img src="logo.png" alt="Logo Web"&gt;</code></pre>
+            </div>
+
+            <div class="info-box">
+              <b>Saran:</b> jangan isi <span class="inline-code">alt</span> asal-asalan.
+              Tulis deskripsi singkat yang menjelaskan gambar tersebut.
+            </div>
+          </section>
+
+          <section id="style">
+            <h2>Atribut style</h2>
+
+            <p>
+              Atribut <span class="inline-code">style</span> digunakan untuk menulis CSS
+              langsung di dalam elemen HTML. Cara ini disebut inline CSS.
+            </p>
+
+            <div class="code-card">
+              <div class="code-header">
+                <span>Contoh style</span>
+
+                <span class="code-dots">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </span>
+              </div>
+
+              <pre><code>&lt;p style="color: blue;"&gt;Teks ini berwarna biru.&lt;/p&gt;</code></pre>
+            </div>
+
+            <div class="info-box">
+              <b>Catatan:</b> inline CSS boleh dipakai untuk belajar, tetapi untuk project
+              yang lebih rapi, CSS sebaiknya dipisah ke dalam file
+              <span class="inline-code">.css</span>.
+            </div>
+          </section>
+
+          <section id="title">
+            <h2>Atribut title</h2>
+
+            <p>
+              Atribut <span class="inline-code">title</span> digunakan untuk memberikan
+              informasi tambahan pada elemen. Pada banyak browser, teks title akan muncul
+              ketika kursor diarahkan ke elemen tersebut.
+            </p>
+
+            <div class="code-card">
+              <div class="code-header">
+                <span>Contoh title</span>
+
+                <span class="code-dots">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </span>
+              </div>
+
+              <pre><code>&lt;p title="informasi tambahan"&gt;Arahkan kursor ke teks ini.&lt;/p&gt;</code></pre>
+            </div>
+          </section>
+
+          <section id="id">
+            <h2>Atribut id</h2>
+
+            <p>
+              Atribut <span class="inline-code">id</span> digunakan untuk memberikan
+              identitas unik pada sebuah elemen. Dalam satu halaman, nilai
+              <span class="inline-code">id</span> sebaiknya tidak digunakan berulang.
+            </p>
+
+            <div class="code-card">
+              <div class="code-header">
+                <span>Contoh id</span>
+
+                <span class="code-dots">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </span>
+              </div>
+
+              <pre><code>&lt;h2 id="materi-html"&gt;Materi HTML&lt;/h2&gt;</code></pre>
+            </div>
+
+            <p>
+              Atribut <span class="inline-code">id</span> sering dipakai untuk navigasi
+              menuju bagian tertentu di halaman.
+            </p>
+
+            <div class="code-card">
+              <div class="code-header">
+                <span>Contoh link ke id</span>
+
+                <span class="code-dots">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </span>
+              </div>
+
+              <pre><code>&lt;a href="#materi-html"&gt;ke Materi HTML&lt;/a&gt;</code></pre>
+            </div>
+          </section>
+
+          <section id="disabled">
+            <h2>Atribut disabled</h2>
+
+            <p>
+              Atribut <span class="inline-code">disabled</span> digunakan untuk
+              menonaktifkan elemen input atau tombol. Elemen yang diberi atribut ini
+              tidak dapat digunakan oleh pengguna.
+            </p>
+
+            <div class="code-card">
+              <div class="code-header">
+                <span>Contoh disabled</span>
+
+                <span class="code-dots">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </span>
+              </div>
+
+              <pre><code>&lt;button disabled&gt;Tombol Tidak Aktif&lt;/button&gt;</code></pre>
+            </div>
+
+            <div class="info-box">
+              <b>Kesimpulan bab:</b> atribut membuat elemen HTML menjadi lebih spesifik.
+              Dengan atribut, sebuah tag tidak hanya memiliki struktur, tetapi juga
+              dapat memiliki tujuan, alamat, identitas, gaya, dan perilaku tertentu.
+            </div>
+          </section>
+
+          <section class="article-footer" id="ujian">
+            <p>
+              <b>Ujian Bab 2</b>
+            </p>
+
+            <p>
+              Link ujian disediakan sebagai latihan opsional.
+              
+            </p>
+
+            <a href="ujian_bab_2.html" class="exam-link">
+              Buka Ujian Bab 2
+            </a>
+          </section>
+
+          <p class="finish">
+            <cite>Selesai</cite>
+          </p>
+
+        </article>
+
+      </main>
+
+    </div>
+
+  </div>
+
 </body>
 </html>
